@@ -1,0 +1,1357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Arun FlavorFusion | Modern Food Recipes</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
+  <link rel="icon" href="https://cdn3.vectorstock.com/i/1000x1000/79/07/vegetable-food-icon-design-template-isolated-vector-34597907.jpg"/>
+  <style>
+    .dish-card:hover .dish-image {
+      transform: scale(1.05);
+    }
+    .gradient-bg {
+      background: linear-gradient(135deg, #f9f9f9 0%, #f3f4f6 100%);
+    }
+    .hero-overlay {
+      background: rgba(0,0,0,0.3);
+    }
+    .quantity-controls {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      margin: 10px 0;
+    }
+    .quantity {
+      width: 30px;
+      text-align: center;
+    }
+    .add-to-cart {
+      background-color: orange;
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    .cart-message {
+      margin-top: 10px;
+      color: green;
+    }
+    .star {
+      cursor: pointer;
+      font-size: 20px;
+    }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+  <!-- Navigation -->
+<!-- Navigation -->
+<nav class="bg-white shadow-lg sticky top-0 z-50">
+  <div class="container mx-auto px-6 py-3">
+    <div class="flex justify-between items-center">
+      <div class="flex items-center space-x-4">
+        <span class="text-2xl font-bold text-amber-600">Arun FlavorFusion 🧑‍🍳</span>
+      </div>
+      <div class="hidden md:flex items-center space-x-8 nav-links">
+        <a href="#" class="text-gray-800 hover:text-amber-600 transition">Home</a>
+        <a href="#recipes" class="text-gray-800 hover:text-amber-600 transition">Recipes</a>
+        <a href="#categories" class="text-gray-800 hover:text-amber-600 transition">Categories</a>
+        <a href="#about" class="text-gray-800 hover:text-amber-600 transition">About</a>
+        <button id="cart-btn" class="relative text-gray-800 hover:text-amber-600 transition">
+          <ion-icon name="cart-outline" class="text-2xl"></ion-icon>
+          <span id="cart-count" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">0</span>
+        </button>
+      </div>
+      <button id="menu-toggle" class="md:hidden focus:outline-none" aria-label="Toggle Menu">
+        <ion-icon name="menu" class="text-2xl text-gray-800"></ion-icon>
+      </button>
+    </div>
+  </div>
+</nav>
+
+
+  <!-- Hero Section -->
+  <section class="relative h-96 flex items-center justify-center bg-cover bg-center"
+    style="background-image: url('https://c7.alamy.com/comp/2C1A20G/banner-raw-uncooked-ingredients-for-cooking-pasta-cooking-background-food-banner-2C1A20G.jpg');">
+    <div class="hero-overlay absolute inset-0"></div>
+    <div class="z-10 text-center px-4">
+      <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">Discover Culinary Delights</h1>
+      <p class="text-xl text-white mb-8">Over 1000+ delicious recipes from around the world</p>
+      <div class="relative max-w-md mx-auto">
+        <input type="text" placeholder="Search recipes..."
+          class="w-full px-6 py-3 rounded-full shadow-md focus:outline-none focus:ring-2 focus:ring-amber-500" aria-label="Search recipes"/>
+        <button class="absolute right-2 top-2 bg-amber-500 text-white p-2 rounded-full hover:bg-amber-600 transition" aria-label="Search">
+          <ion-icon name="search"></ion-icon>
+        </button>
+      </div>
+    </div>
+  </section>
+<!-- Cart Panel -->
+<div id="cart-panel" class="max-w-3xl mx-auto my-8 bg-white shadow-md rounded-lg p-6 hidden">
+  <h2 class="text-2xl font-bold mb-4">Your Cart 🛒</h2>
+  <ul id="cart-items" class="space-y-3"></ul>
+  <p id="cart-total" class="mt-4 font-semibold text-right text-lg text-amber-700">Total: ₹0</p>
+</div>
+
+  <!-- Popular Recipes Section -->
+  <section id="recipes" class="py-16 gradient-bg">
+    <div class="container mx-auto px-6">
+      <h2 class="text-3xl font-bold text-center mb-12">Biryani 🍗</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        
+        <!-- RECIPE CARD TEMPLATE -->
+        <!-- Copy and update for each recipe -->
+        <!-- START -->
+        <div class="dish-card bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition duration-300">
+          <div class="relative h-48 overflow-hidden">
+            <img src="https://images.tv9telugu.com/wp-content/uploads/2025/07/gongura-chicken-biryani-bowl.jpg"
+              class="w-full h-full object-cover dish-image transition duration-500"
+              alt="Gongura Chicken Biryani"/>
+            <span class="absolute top-4 right-4 bg-amber-500 text-white px-3 py-1 rounded-full text-xs font-semibold">
+              Gongura Chicken Biryani
+            </span>
+          </div>
+          <div class="product p-4">
+            <h3 class="text-xl font-semibold mb-2">Gongura Chicken Biryani</h3>
+            <p class="text-gray-600 mb-4">Delicious and Spicy.</p>
+             <p class="text-gray-600 mb-4">₹180.</p>
+            <div class="flex items-center justify-between">
+              <div class="flex items-center text-amber-500">
+                <ion-icon name="time-outline" class="mr-1"></ion-icon>
+                <span>25 min</span>
+              </div>
+              <div class="quantity-controls">
+                <button class="decrease" aria-label="Decrease quantity">-</button>
+                <span class="quantity">0</span>
+                <button class="increase" aria-label="Increase quantity">+</button>
+              </div>
+              <button class="add-to-cart">Add to Cart</button>
+            </div>
+            <div class="cart-message text-sm mt-2"></div>
+            <div class="star-rating mt-2" data-rating="0">
+              <span class="star" data-value="1">☆</span>
+              <span class="star" data-value="2">☆</span>
+              <span class="star" data-value="3">☆</span>
+              <span class="star" data-value="4">☆</span>
+              <span class="star" data-value="5">☆</span>
+            </div>
+          </div>
+        </div>
+        <!-- END -->
+        
+        <div class="dish-card bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition duration-300">
+  <div class="relative h-48 overflow-hidden">
+    <img src="https://www.licious.in/blog/wp-content/uploads/2022/06/chicken-hyderabadi-biryani-01-750x750.jpg"
+      class="w-full h-full object-cover dish-image transition duration-500"
+      alt="YOUR_ALT_TEXT" />
+    <span class="absolute top-4 right-4 bg-amber-500 text-white px-3 py-1 rounded-full text-xs font-semibold">
+      Chicken Briyani
+    </span>
+  </div>
+  <div class="product p-4">
+    <h3 class="text-xl font-semibold mb-2">Chicken Biryani</h3>
+    <p class="text-gray-600 mb-4">Tasty and Spicy</p>
+     <p class="text-gray-600 mb-4">₹150.</p>
+    <div class="flex items-center justify-between">
+      <div class="flex items-center text-amber-500">
+        <ion-icon name="time-outline" class="mr-1"></ion-icon>
+        <span>30 min</span>
+      </div>
+      <div class="quantity-controls">
+        <button class="decrease" aria-label="Decrease quantity">-</button>
+        <span class="quantity">0</span>
+        <button class="increase" aria-label="Increase quantity">+</button>
+      </div>
+      <button class="add-to-cart">Add to Cart</button>
+    </div>
+    <div class="cart-message text-sm mt-2"></div>
+    <div class="star-rating mt-2" data-rating="0">
+      <span class="star" data-value="1">☆</span>
+      <span class="star" data-value="2">☆</span>
+      <span class="star" data-value="3">☆</span>
+      <span class="star" data-value="4">☆</span>
+      <span class="star" data-value="5">☆</span>
+    </div>
+  </div>
+</div>
+            <div class="dish-card bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition duration-300">
+          <div class="relative h-48 overflow-hidden">
+            <img src="https://www.licious.in/blog/wp-content/uploads/2022/06/mutton-hyderabadi-biryani-01-750x750.jpg"
+              class="w-full h-full object-cover dish-image transition duration-500"
+              alt="Gongura Chicken Biryani"/>
+            <span class="absolute top-4 right-4 bg-amber-500 text-white px-3 py-1 rounded-full text-xs font-semibold">
+              Mutton Biryani
+            </span>
+          </div>
+          <div class="product p-4">
+            <h3 class="text-xl font-semibold mb-2">Mutton Biryani</h3>
+            <p class="text-gray-600 mb-4">Delicious and Spicy.</p>
+             <p class="text-gray-600 mb-4">₹200.</p>
+            <div class="flex items-center justify-between">
+              <div class="flex items-center text-amber-500">
+                <ion-icon name="time-outline" class="mr-1"></ion-icon>
+                <span>40 min</span>
+              </div>
+              <div class="quantity-controls">
+                <button class="decrease" aria-label="Decrease quantity">-</button>
+                <span class="quantity">0</span>
+                <button class="increase" aria-label="Increase quantity">+</button>
+              </div>
+              <button class="add-to-cart">Add to Cart</button>
+            </div>
+            <div class="cart-message text-sm mt-2"></div>
+            <div class="star-rating mt-2" data-rating="0">
+              <span class="star" data-value="1">☆</span>
+              <span class="star" data-value="2">☆</span>
+              <span class="star" data-value="3">☆</span>
+              <span class="star" data-value="4">☆</span>
+              <span class="star" data-value="5">☆</span>
+            </div>
+          </div>
+        </div>    
+      </div>
+    </div>
+  </section>
+
+  <!-- Sea Food Section -->
+<section class="py-16 gradient-bg">
+  <div class="container mx-auto px-6">
+    <h2 class="text-3xl font-bold text-center mb-12">Sea Food 🐠</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+      <!-- Sea food 1 -->
+      <div class="dish-card bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition duration-300">
+        <div class="relative h-48 overflow-hidden">
+          <img src="https://i.ytimg.com/vi/oTT8YlNiOTM/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLAi6DfkB2yL_1Ph7LfMLLk6OaJ0gQ"
+            class="w-full h-full object-cover dish-image transition duration-500"
+            alt="" />
+          <span class="absolute top-4 right-4 bg-green-500 text-white px-3 py-1 rounded-full text-xs font-semibold">
+            Cheepala pulusu
+          </span>
+        </div>
+        <div class="product p-4">
+          <h3 class="text-xl font-semibold mb-2">Cheepala pulusu</h3>
+          <p class="text-gray-600 mb-4">spicy</p>
+           <p class="text-gray-600 mb-4">₹350.</p>
+          <div class="flex items-center justify-between">
+            <div class="flex items-center text-amber-500">
+              <ion-icon name="time-outline" class="mr-1"></ion-icon>
+              <span>45 min</span>
+            </div>
+            <div class="quantity-controls">
+              <button class="decrease" aria-label="Decrease quantity">-</button>
+              <span class="quantity">0</span>
+              <button class="increase" aria-label="Increase quantity">+</button>
+            </div>
+            <button class="add-to-cart">Add to Cart</button>
+          </div>
+          <div class="cart-message text-sm mt-2"></div>
+          <div class="star-rating mt-2" data-rating="0">
+            <span class="star" data-value="1">☆</span>
+            <span class="star" data-value="2">☆</span>
+            <span class="star" data-value="3">☆</span>
+            <span class="star" data-value="4">☆</span>
+            <span class="star" data-value="5">☆</span>
+          </div>
+        </div>
+      </div>
+         <!-- Sea food 2 -->
+   <div class="dish-card bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition duration-300">
+        <div class="relative h-48 overflow-hidden">
+          <img src="https://onestophalal.com/cdn/shop/articles/fish_biryani-1701906057159_1200x.jpg?v=1701906108"
+            class="w-full h-full object-cover dish-image transition duration-500"
+            alt="" />
+          <span class="absolute top-4 right-4 bg-green-500 text-white px-3 py-1 rounded-full text-xs font-semibold">
+            Fish Biryani
+          </span>
+        </div>
+        <div class="product p-4">
+          <h3 class="text-xl font-semibold mb-2">Fish Biryani</h3>
+          <p class="text-gray-600 mb-4">spicy and yummy</p>
+           <p class="text-gray-600 mb-4">₹130.</p>
+          <div class="flex items-center justify-between">
+            <div class="flex items-center text-amber-500">
+              <ion-icon name="time-outline" class="mr-1"></ion-icon>
+              <span>30 min</span>
+            </div>
+            <div class="quantity-controls">
+              <button class="decrease" aria-label="Decrease quantity">-</button>
+              <span class="quantity">0</span>
+              <button class="increase" aria-label="Increase quantity">+</button>
+            </div>
+            <button class="add-to-cart">Add to Cart</button>
+          </div>
+          <div class="cart-message text-sm mt-2"></div>
+          <div class="star-rating mt-2" data-rating="0">
+            <span class="star" data-value="1">☆</span>
+            <span class="star" data-value="2">☆</span>
+            <span class="star" data-value="3">☆</span>
+            <span class="star" data-value="4">☆</span>
+            <span class="star" data-value="5">☆</span>
+          </div>
+        </div>
+      </div>
+      <!-- Sea food 3 -->
+        <div class="dish-card bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition duration-300">
+        <div class="relative h-48 overflow-hidden">
+          <img src="https://yellowchilis.com/wp-content/uploads/2021/01/prawn-biryani-recipe-shrim-biryani-in-one-pot-eral-biriyani.jpg"
+            class="w-full h-full object-cover dish-image transition duration-500"
+            alt="" />
+          <span class="absolute top-4 right-4 bg-green-500 text-white px-3 py-1 rounded-full text-xs font-semibold">
+            Prawns Biryani
+          </span>
+        </div>
+        <div class="product p-4">
+          <h3 class="text-xl font-semibold mb-2">Prawns Biryani</h3>
+          <p class="text-gray-600 mb-4"> yummy</p>
+           <p class="text-gray-600 mb-4">₹125.</p>
+          <div class="flex items-center justify-between">
+            <div class="flex items-center text-amber-500">
+              <ion-icon name="time-outline" class="mr-1"></ion-icon>
+              <span>28 min</span>
+            </div>
+            <div class="quantity-controls">
+              <button class="decrease" aria-label="Decrease quantity">-</button>
+              <span class="quantity">0</span>
+              <button class="increase" aria-label="Increase quantity">+</button>
+            </div>
+            <button class="add-to-cart">Add to Cart</button>
+          </div>
+          <div class="cart-message text-sm mt-2"></div>
+          <div class="star-rating mt-2" data-rating="0">
+            <span class="star" data-value="1">☆</span>
+            <span class="star" data-value="2">☆</span>
+            <span class="star" data-value="3">☆</span>
+            <span class="star" data-value="4">☆</span>
+            <span class="star" data-value="5">☆</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+ <!-- Fast Food Section -->
+<section class="py-16 gradient-bg">
+  <div class="container mx-auto px-6">
+    <h2 class="text-3xl font-bold text-center mb-12">Fast Food 🔥</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+      <!-- Fast food 1 -->
+      <div class="dish-card bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition duration-300">
+        <div class="relative h-48 overflow-hidden">
+          <img src="https://t3.ftcdn.net/jpg/04/47/95/48/360_F_447954890_nYoJ3Lm6OElMe0LogDry2KfHF4tXsfMw.jpg"
+            class="w-full h-full object-cover dish-image transition duration-500"
+            alt="" />
+          <span class="absolute top-4 right-4 bg-purple-500 text-white px-3 py-1 rounded-full text-xs font-semibold">
+            Gobi Manchurya
+          </span>
+        </div>
+        <div class="product p-4">
+          <h3 class="text-xl font-semibold mb-2">Gobi Manchurya</h3>
+          <p class="text-gray-600 mb-4">spicy</p>
+           <p class="text-gray-600 mb-4">₹80.</p>
+          <div class="flex items-center justify-between">
+            <div class="flex items-center text-amber-500">
+              <ion-icon name="time-outline" class="mr-1"></ion-icon>
+              <span>30 min</span>
+            </div>
+            <div class="quantity-controls">
+              <button class="decrease" aria-label="Decrease quantity">-</button>
+              <span class="quantity">0</span>
+              <button class="increase" aria-label="Increase quantity">+</button>
+            </div>
+            <button class="add-to-cart">Add to Cart</button>
+          </div>
+          <div class="cart-message text-sm mt-2"></div>
+          <div class="star-rating mt-2" data-rating="0">
+            <span class="star" data-value="1">☆</span>
+            <span class="star" data-value="2">☆</span>
+            <span class="star" data-value="3">☆</span>
+            <span class="star" data-value="4">☆</span>
+            <span class="star" data-value="5">☆</span>
+          </div>
+        </div>
+      </div>
+         <!-- Fast food 2 -->
+   <div class="dish-card bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition duration-300">
+        <div class="relative h-48 overflow-hidden">
+          <img src="https://drop.ndtv.com/albums/COOKS/5-of-the-best-s_638060982477426427/638060982498718633.png"
+            class="w-full h-full object-cover dish-image transition duration-500"
+            alt="" />
+          <span class="absolute top-4 right-4 bg-purple-500 text-white px-3 py-1 rounded-full text-xs font-semibold">
+            Egg Noodels
+          </span>
+        </div>
+        <div class="product p-4">
+          <h3 class="text-xl font-semibold mb-2">Egg Noodels</h3>
+          <p class="text-gray-600 mb-4">spicy and yummy</p>
+           <p class="text-gray-600 mb-4">₹80.</p>
+          <div class="flex items-center justify-between">
+            <div class="flex items-center text-amber-500">
+              <ion-icon name="time-outline" class="mr-1"></ion-icon>
+              <span>30 min</span>
+            </div>
+            <div class="quantity-controls">
+              <button class="decrease" aria-label="Decrease quantity">-</button>
+              <span class="quantity">0</span>
+              <button class="increase" aria-label="Increase quantity">+</button>
+            </div>
+            <button class="add-to-cart">Add to Cart</button>
+          </div>
+          <div class="cart-message text-sm mt-2"></div>
+          <div class="star-rating mt-2" data-rating="0">
+            <span class="star" data-value="1">☆</span>
+            <span class="star" data-value="2">☆</span>
+            <span class="star" data-value="3">☆</span>
+            <span class="star" data-value="4">☆</span>
+            <span class="star" data-value="5">☆</span>
+          </div>
+        </div>
+      </div>
+      <!-- Fast food 3 -->
+        <div class="dish-card bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition duration-300">
+        <div class="relative h-48 overflow-hidden">
+          <img src="https://www.kannammacooks.com/wp-content/uploads/street-style-chicken-rice-recipe-1-3.jpg"
+            class="w-full h-full object-cover dish-image transition duration-500"
+            alt="" />
+          <span class="absolute top-4 right-4 bg-purple-500 text-white px-3 py-1 rounded-full text-xs font-semibold">
+            Chicken fired rice
+          </span>
+        </div>
+        <div class="product p-4">
+          <h3 class="text-xl font-semibold mb-2">Chicken fried rice</h3>
+          <p class="text-gray-600 mb-4"> Delicious</p>
+           <p class="text-gray-600 mb-4">₹100.</p>
+          <div class="flex items-center justify-between">
+            <div class="flex items-center text-amber-500">
+              <ion-icon name="time-outline" class="mr-1"></ion-icon>
+              <span>30 min</span>
+            </div>
+            <div class="quantity-controls">
+              <button class="decrease" aria-label="Decrease quantity">-</button>
+              <span class="quantity">0</span>
+              <button class="increase" aria-label="Increase quantity">+</button>
+            </div>
+            <button class="add-to-cart">Add to Cart</button>
+          </div>
+          <div class="cart-message text-sm mt-2"></div>
+          <div class="star-rating mt-2" data-rating="0">
+            <span class="star" data-value="1">☆</span>
+            <span class="star" data-value="2">☆</span>
+            <span class="star" data-value="3">☆</span>
+            <span class="star" data-value="4">☆</span>
+            <span class="star" data-value="5">☆</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+ <!--  Break Fast Section -->
+<section class="py-16 gradient-bg">
+  <div class="container mx-auto px-6">
+    <h2 class="text-3xl font-bold text-center mb-12">  Break Fast 🍳</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+      <!--  Break Fast 1 -->
+      <div class="dish-card bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition duration-300">
+        <div class="relative h-48 overflow-hidden">
+          <img src="https://culinarydelightsandbeyond.com/wp-content/uploads/2023/03/dosa-5oF7d_hPJG4-scaled.jpg"
+            class="w-full h-full object-cover dish-image transition duration-500"
+            alt="" />
+          <span class="absolute top-4 right-4 bg-blue-500 text-white px-3 py-1 rounded-full text-xs font-semibold">
+            Masala Dosa
+          </span>
+        </div>
+        <div class="product p-4">
+          <h3 class="text-xl font-semibold mb-2">Masala Dosa</h3>
+          <p class="text-gray-600 mb-4">Hot and tasty</p>
+           <p class="text-gray-600 mb-4">₹40.</p>
+          <div class="flex items-center justify-between">
+            <div class="flex items-center text-amber-500">
+              <ion-icon name="time-outline" class="mr-1"></ion-icon>
+              <span>20 min</span>
+            </div>
+            <div class="quantity-controls">
+              <button class="decrease" aria-label="Decrease quantity">-</button>
+              <span class="quantity">0</span>
+              <button class="increase" aria-label="Increase quantity">+</button>
+            </div>
+            <button class="add-to-cart">Add to Cart</button>
+          </div>
+          <div class="cart-message text-sm mt-2"></div>
+          <div class="star-rating mt-2" data-rating="0">
+            <span class="star" data-value="1">☆</span>
+            <span class="star" data-value="2">☆</span>
+            <span class="star" data-value="3">☆</span>
+            <span class="star" data-value="4">☆</span>
+            <span class="star" data-value="5">☆</span>
+          </div>
+        </div>
+      </div>
+         <!-- Break Fast 2 -->
+   <div class="dish-card bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition duration-300">
+        <div class="relative h-48 overflow-hidden">
+          <img src="https://t3.ftcdn.net/jpg/03/62/02/26/360_F_362022640_fZ6UM0JycJlFDdBiR1pYlNddKfdGvYwR.jpg"
+            class="w-full h-full object-cover dish-image transition duration-500"
+            alt="" />
+          <span class="absolute top-4 right-4 bg-blue-500 text-white px-3 py-1 rounded-full text-xs font-semibold">
+            Idly
+          </span>
+        </div>
+        <div class="product p-4">
+          <h3 class="text-xl font-semibold mb-2">Idly</h3>
+          <p class="text-gray-600 mb-4">yummy</p>
+           <p class="text-gray-600 mb-4">₹40.</p>
+          <div class="flex items-center justify-between">
+            <div class="flex items-center text-amber-500">
+              <ion-icon name="time-outline" class="mr-1"></ion-icon>
+              <span>25 min</span>
+            </div>
+            <div class="quantity-controls">
+              <button class="decrease" aria-label="Decrease quantity">-</button>
+              <span class="quantity">0</span>
+              <button class="increase" aria-label="Increase quantity">+</button>
+            </div>
+            <button class="add-to-cart">Add to Cart</button>
+          </div>
+          <div class="cart-message text-sm mt-2"></div>
+          <div class="star-rating mt-2" data-rating="0">
+            <span class="star" data-value="1">☆</span>
+            <span class="star" data-value="2">☆</span>
+            <span class="star" data-value="3">☆</span>
+            <span class="star" data-value="4">☆</span>
+            <span class="star" data-value="5">☆</span>
+          </div>
+        </div>
+      </div>
+      <!-- Break fast 3 -->
+        <div class="dish-card bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition duration-300">
+        <div class="relative h-48 overflow-hidden">
+          <img src="https://www.awesomecuisine.com/wp-content/uploads/2020/03/poori-masala-kizhangu.jpg"
+            class="w-full h-full object-cover dish-image transition duration-500"
+            alt="" />
+          <span class="absolute top-4 right-4 bg-blue-500 text-white px-3 py-1 rounded-full text-xs font-semibold">
+            Puri
+          </span>
+        </div>
+        <div class="product p-4">
+          <h3 class="text-xl font-semibold mb-2">Puri</h3>
+          <p class="text-gray-600 mb-4"> Delicious</p>
+           <p class="text-gray-600 mb-4">₹40.</p>
+          <div class="flex items-center justify-between">
+            <div class="flex items-center text-amber-500">
+              <ion-icon name="time-outline" class="mr-1"></ion-icon>
+              <span>30 min</span>
+            </div>
+            <div class="quantity-controls">
+              <button class="decrease" aria-label="Decrease quantity">-</button>
+              <span class="quantity">0</span>
+              <button class="increase" aria-label="Increase quantity">+</button>
+            </div>
+            <button class="add-to-cart">Add to Cart</button>
+          </div>
+          <div class="cart-message text-sm mt-2"></div>
+          <div class="star-rating mt-2" data-rating="0">
+            <span class="star" data-value="1">☆</span>
+            <span class="star" data-value="2">☆</span>
+            <span class="star" data-value="3">☆</span>
+            <span class="star" data-value="4">☆</span>
+            <span class="star" data-value="5">☆</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+ <!--  Dessert Section -->
+<section class="py-16 gradient-bg">
+  <div class="container mx-auto px-6">
+    <h2 class="text-3xl font-bold text-center mb-12">  Dessert 🍨</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+      <!--  Dessert 1 -->
+      <div class="dish-card bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition duration-300">
+        <div class="relative h-48 overflow-hidden">
+          <img src="https://hotcakesindia.com/wp-content/uploads/2021/09/home-page.png"
+            class="w-full h-full object-cover dish-image transition duration-500"
+            alt="" />
+          <span class="absolute top-4 right-4 bg-red-500 text-white px-3 py-1 rounded-full text-xs font-semibold">
+            Cake
+          </span>
+        </div>
+        <div class="product p-4">
+          <h3 class="text-xl font-semibold mb-2">Cake</h3>
+          <p class="text-gray-600 mb-4">Yummy and creamie</p>
+           <p class="text-gray-600 mb-4">₹300.</p>
+          <div class="flex items-center justify-between">
+            <div class="flex items-center text-amber-500">
+              <ion-icon name="time-outline" class="mr-1"></ion-icon>
+              <span>20 min</span>
+            </div>
+            <div class="quantity-controls">
+              <button class="decrease" aria-label="Decrease quantity">-</button>
+              <span class="quantity">0</span>
+              <button class="increase" aria-label="Increase quantity">+</button>
+            </div>
+            <button class="add-to-cart">Add to Cart</button>
+          </div>
+          <div class="cart-message text-sm mt-2"></div>
+          <div class="star-rating mt-2" data-rating="0">
+            <span class="star" data-value="1">☆</span>
+            <span class="star" data-value="2">☆</span>
+            <span class="star" data-value="3">☆</span>
+            <span class="star" data-value="4">☆</span>
+            <span class="star" data-value="5">☆</span>
+          </div>
+        </div>
+      </div>
+         <!-- dessert 2 -->
+   <div class="dish-card bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition duration-300">
+        <div class="relative h-48 overflow-hidden">
+          <img src="https://eat-drink-love.com/wp-content/uploads/2013/05/Vanilla-Bean-Ice-Cream-1-title.jpg"
+            class="w-full h-full object-cover dish-image transition duration-500"
+            alt="" />
+          <span class="absolute top-4 right-4 bg-red-500 text-white px-3 py-1 rounded-full text-xs font-semibold">
+            Vennela Ice cream
+          </span>
+        </div>
+        <div class="product p-4">
+          <h3 class="text-xl font-semibold mb-2">Vennela Ice cream</h3>
+          <p class="text-gray-600 mb-4">yummy</p>
+           <p class="text-gray-600 mb-4">₹60.</p>
+          <div class="flex items-center justify-between">
+            <div class="flex items-center text-amber-500">
+              <ion-icon name="time-outline" class="mr-1"></ion-icon>
+              <span>25 min</span>
+            </div>
+            <div class="quantity-controls">
+              <button class="decrease" aria-label="Decrease quantity">-</button>
+              <span class="quantity">0</span>
+              <button class="increase" aria-label="Increase quantity">+</button>
+            </div>
+            <button class="add-to-cart">Add to Cart</button>
+          </div>
+          <div class="cart-message text-sm mt-2"></div>
+          <div class="star-rating mt-2" data-rating="0">
+            <span class="star" data-value="1">☆</span>
+            <span class="star" data-value="2">☆</span>
+            <span class="star" data-value="3">☆</span>
+            <span class="star" data-value="4">☆</span>
+            <span class="star" data-value="5">☆</span>
+          </div>
+        </div>
+      </div>
+      <!-- dessert 3 -->
+        <div class="dish-card bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition duration-300">
+        <div class="relative h-48 overflow-hidden">
+          <img src="data:image/jpeg;base64,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"
+            class="w-full h-full object-cover dish-image transition duration-500"
+            alt="" />
+          <span class="absolute top-4 right-4 bg-red-500 text-white px-3 py-1 rounded-full text-xs font-semibold">
+            Pudding
+          </span>
+        </div>
+        <div class="product p-4">
+          <h3 class="text-xl font-semibold mb-2">Pudding</h3>
+          <p class="text-gray-600 mb-4"> Delicious</p>
+           <p class="text-gray-600 mb-4">₹100.</p>
+          <div class="flex items-center justify-between">
+            <div class="flex items-center text-amber-500">
+              <ion-icon name="time-outline" class="mr-1"></ion-icon>
+              <span>30 min</span>
+            </div>
+            <div class="quantity-controls">
+              <button class="decrease" aria-label="Decrease quantity">-</button>
+              <span class="quantity">0</span>
+              <button class="increase" aria-label="Increase quantity">+</button>
+            </div>
+            <button class="add-to-cart">Add to Cart</button>
+          </div>
+          <div class="cart-message text-sm mt-2"></div>
+          <div class="star-rating mt-2" data-rating="0">
+            <span class="star" data-value="1">☆</span>
+            <span class="star" data-value="2">☆</span>
+            <span class="star" data-value="3">☆</span>
+            <span class="star" data-value="4">☆</span>
+            <span class="star" data-value="5">☆</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+ <!--  Fruits Section -->
+<section class="py-16 gradient-bg">
+  <div class="container mx-auto px-6">
+    <h2 class="text-3xl font-bold text-center mb-12">Fruits🍎</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+      <!--  Fruits 1 -->
+      <div class="dish-card bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition duration-300">
+        <div class="relative h-48 overflow-hidden">
+          <img src="https://lifestyletodaynews.com/wp-content/uploads/2014/07/Fruit-e1407823984580.jpg"
+            class="w-full h-full object-cover dish-image transition duration-500"
+            alt="" />
+          <span class="absolute top-4 right-4 bg-violet-500 text-white px-3 py-1 rounded-full text-xs font-semibold">
+            Seasonal Fruits
+          </span>
+        </div>
+        <div class="product p-4">
+          <h3 class="text-xl font-semibold mb-2">Seasonal Fruits</h3>
+          <p class="text-gray-600 mb-4">Healthy</p>
+           <p class="text-gray-600 mb-4">₹100.</p>
+          <div class="flex items-center justify-between">
+            <div class="flex items-center text-amber-500">
+              <ion-icon name="time-outline" class="mr-1"></ion-icon>
+              <span>20 min</span>
+            </div>
+            <div class="quantity-controls">
+              <button class="decrease" aria-label="Decrease quantity">-</button>
+              <span class="quantity">0</span>
+              <button class="increase" aria-label="Increase quantity">+</button>
+            </div>
+            <button class="add-to-cart">Add to Cart</button>
+          </div>
+          <div class="cart-message text-sm mt-2"></div>
+          <div class="star-rating mt-2" data-rating="0">
+            <span class="star" data-value="1">☆</span>
+            <span class="star" data-value="2">☆</span>
+            <span class="star" data-value="3">☆</span>
+            <span class="star" data-value="4">☆</span>
+            <span class="star" data-value="5">☆</span>
+          </div>
+        </div>
+      </div>
+         <!-- Fruits 2 -->
+   <div class="dish-card bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition duration-300">
+        <div class="relative h-48 overflow-hidden">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR23SmjZXAXuDtFNaAiq7M7iNCXxuJn-xORaA&s"
+            class="w-full h-full object-cover dish-image transition duration-500"
+            alt="" />
+          <span class="absolute top-4 right-4 bg-violet-500 text-white px-3 py-1 rounded-full text-xs font-semibold">
+            Fresh Fruits
+          </span>
+        </div>
+        <div class="product p-4">
+          <h3 class="text-xl font-semibold mb-2">Cut Fruits</h3>
+          <p class="text-gray-600 mb-4">Tasty</p>
+           <p class="text-gray-600 mb-4">₹100.</p>
+          <div class="flex items-center justify-between">
+            <div class="flex items-center text-amber-500">
+              <ion-icon name="time-outline" class="mr-1"></ion-icon>
+              <span>25 min</span>
+            </div>
+            <div class="quantity-controls">
+              <button class="decrease" aria-label="Decrease quantity">-</button>
+              <span class="quantity">0</span>
+              <button class="increase" aria-label="Increase quantity">+</button>
+            </div>
+            <button class="add-to-cart">Add to Cart</button>
+          </div>
+          <div class="cart-message text-sm mt-2"></div>
+          <div class="star-rating mt-2" data-rating="0">
+            <span class="star" data-value="1">☆</span>
+            <span class="star" data-value="2">☆</span>
+            <span class="star" data-value="3">☆</span>
+            <span class="star" data-value="4">☆</span>
+            <span class="star" data-value="5">☆</span>
+          </div>
+        </div>
+      </div>
+      <!-- Fruits 3 -->
+        <div class="dish-card bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition duration-300">
+        <div class="relative h-48 overflow-hidden">
+          <img src="https://know-how.mnstry.com/wp-content/uploads/2021/11/Datteln-768x512.jpg"
+            alt="" />
+          <span class="absolute top-4 right-4 bg-violet-500 text-white px-3 py-1 rounded-full text-xs font-semibold">
+            Dessert Fruits
+          </span>
+        </div>
+        <div class="product p-4">
+          <h3 class="text-xl font-semibold mb-2">Dessert Fruits</h3>
+          <p class="text-gray-600 mb-4"> Delicious and yummy</p>
+           <p class="text-gray-600 mb-4">₹150.</p>
+          <div class="flex items-center justify-between">
+            <div class="flex items-center text-amber-500">
+              <ion-icon name="time-outline" class="mr-1"></ion-icon>
+              <span>30 min</span>
+            </div>
+            <div class="quantity-controls">
+              <button class="decrease" aria-label="Decrease quantity">-</button>
+              <span class="quantity">0</span>
+              <button class="increase" aria-label="Increase quantity">+</button>
+            </div>
+            <button class="add-to-cart">Add to Cart</button>
+          </div>
+          <div class="cart-message text-sm mt-2"></div>
+          <div class="star-rating mt-2" data-rating="0">
+            <span class="star" data-value="1">☆</span>
+            <span class="star" data-value="2">☆</span>
+            <span class="star" data-value="3">☆</span>
+            <span class="star" data-value="4">☆</span>
+            <span class="star" data-value="5">☆</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+ <!--  Snacks and cool drinks Section -->
+<section class="py-16 gradient-bg">
+  <div class="container mx-auto px-6">
+    <h2 class="text-3xl font-bold text-center mb-12">Snacks🍟/Cool Drinks🥤</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+      <!--  snacks 1 -->
+      <div class="dish-card bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition duration-300">
+        <div class="relative h-48 overflow-hidden">
+          <img src="https://recipesblob.oetker.in/assets/2d2a87f7533e439aa3e6ed9bd63656e7/1272x764/tandoori-pizza.webp"
+            class="w-full h-full object-cover dish-image transition duration-500"
+            alt="" />
+          <span class="absolute top-4 right-4 bg-orange-500 text-white px-3 py-1 rounded-full text-xs font-semibold">
+          Pizza
+          </span>
+        </div>
+        <div class="product p-4">
+          <h3 class="text-xl font-semibold mb-2">Pizza</h3>
+          <p class="text-gray-600 mb-4">Tasty and yummy</p>
+           <p class="text-gray-600 mb-4">₹140.</p>
+          <div class="flex items-center justify-between">
+            <div class="flex items-center text-amber-500">
+              <ion-icon name="time-outline" class="mr-1"></ion-icon>
+              <span>20 min</span>
+            </div>
+            <div class="quantity-controls">
+              <button class="decrease" aria-label="Decrease quantity">-</button>
+              <span class="quantity">0</span>
+              <button class="increase" aria-label="Increase quantity">+</button>
+            </div>
+            <button class="add-to-cart">Add to Cart</button>
+          </div>
+          <div class="cart-message text-sm mt-2"></div>
+          <div class="star-rating mt-2" data-rating="0">
+            <span class="star" data-value="1">☆</span>
+            <span class="star" data-value="2">☆</span>
+            <span class="star" data-value="3">☆</span>
+            <span class="star" data-value="4">☆</span>
+            <span class="star" data-value="5">☆</span>
+          </div>
+        </div>
+      </div>
+         <!-- snacks 2 -->
+   <div class="dish-card bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition duration-300">
+        <div class="relative h-48 overflow-hidden">
+          <img src="data:image/jpeg;base64,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"
+            class="w-full h-full object-cover dish-image transition duration-500"
+            alt="" />
+          <span class="absolute top-4 right-4 bg-orange-500 text-white px-3 py-1 rounded-full text-xs font-semibold">
+            Burger
+          </span>
+        </div>
+        <div class="product p-4">
+          <h3 class="text-xl font-semibold mb-2">Burger</h3>
+          <p class="text-gray-600 mb-4">Tasty</p>
+          <p class="text-gray-600 mb-4">₹150.</p>
+          <div class="flex items-center justify-between">
+            <div class="flex items-center text-amber-500">
+              <ion-icon name="time-outline" class="mr-1"></ion-icon>
+              <span>25 min</span>
+            </div>
+            <div class="quantity-controls">
+              <button class="decrease" aria-label="Decrease quantity">-</button>
+              <span class="quantity">0</span>
+              <button class="increase" aria-label="Increase quantity">+</button>
+            </div>
+            <button class="add-to-cart">Add to Cart</button>
+          </div>
+          <div class="cart-message text-sm mt-2"></div>
+          <div class="star-rating mt-2" data-rating="0">
+            <span class="star" data-value="1">☆</span>
+            <span class="star" data-value="2">☆</span>
+            <span class="star" data-value="3">☆</span>
+            <span class="star" data-value="4">☆</span>
+            <span class="star" data-value="5">☆</span>
+          </div>
+        </div>
+      </div>
+      <!-- snacks 3 -->
+        <div class="dish-card bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition duration-300">
+        <div class="relative h-48 overflow-hidden">
+          <img src="https://tandobeverage.com/wp-content/uploads/2024/07/beverage-coloring.jpg" />
+          <span class="absolute top-4 right-4 bg-orange-500 text-white px-3 py-1 rounded-full text-xs font-semibold">
+            Cool Drinks & Juices
+          </span>
+        </div>
+        <div class="product p-4">
+          <h3 class="text-xl font-semibold mb-2">Cool Drinks & Juices</h3>
+          <p class="text-gray-600 mb-4">Soft Drinks</p>
+           <p class="text-gray-600 mb-4">₹25.</p>
+          <div class="flex items-center justify-between">
+            <div class="flex items-center text-amber-500">
+              <ion-icon name="time-outline" class="mr-1"></ion-icon>
+              <span>30 min</span>
+            </div>
+            <div class="quantity-controls">
+              <button class="decrease" aria-label="Decrease quantity">-</button>
+              <span class="quantity">0</span>
+              <button class="increase" aria-label="Increase quantity">+</button>
+            </div>
+            <button class="add-to-cart">Add to Cart</button>
+          </div>
+          <div class="cart-message text-sm mt-2"></div>
+          <div class="star-rating mt-2" data-rating="0">
+            <span class="star" data-value="1">☆</span>
+            <span class="star" data-value="2">☆</span>
+            <span class="star" data-value="3">☆</span>
+            <span class="star" data-value="4">☆</span>
+            <span class="star" data-value="5">☆</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--  Hot Drinks-->
+<section class="py-16 gradient-bg">
+  <div class="container mx-auto px-6">
+    <h2 class="text-3xl font-bold text-center mb-12">Hot Drinks🍵</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+      <!-- hot drinks 1 -->
+      <div class="dish-card bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition duration-300">
+        <div class="relative h-48 overflow-hidden">
+          <img src="https://hereheremarket.com/cdn/shop/articles/lets-talk-about-masala-chai-one-of-the-worlds-most-popular-teas-853998.jpg?v=1710694974"
+            class="w-full h-full object-cover dish-image transition duration-500"
+            alt="" />
+          <span class="absolute top-4 right-4 bg-blue-500 text-white px-3 py-1 rounded-full text-xs font-semibold">
+            Tea
+          </span>
+        </div>
+        <div class="product p-4">
+          <h3 class="text-xl font-semibold mb-2">Tea</h3>
+          <p class="text-gray-600 mb-4">Hot and tasty</p>
+           <p class="text-gray-600 mb-4">₹20.</p>
+          <div class="flex items-center justify-between">
+            <div class="flex items-center text-amber-500">
+              <ion-icon name="time-outline" class="mr-1"></ion-icon>
+              <span>10 min</span>
+            </div>
+            <div class="quantity-controls">
+              <button class="decrease" aria-label="Decrease quantity">-</button>
+              <span class="quantity">0</span>
+              <button class="increase" aria-label="Increase quantity">+</button>
+            </div>
+            <button class="add-to-cart">Add to Cart</button>
+          </div>
+          <div class="cart-message text-sm mt-2"></div>
+          <div class="star-rating mt-2" data-rating="0">
+            <span class="star" data-value="1">☆</span>
+            <span class="star" data-value="2">☆</span>
+            <span class="star" data-value="3">☆</span>
+            <span class="star" data-value="4">☆</span>
+            <span class="star" data-value="5">☆</span>
+          </div>
+        </div>
+      </div>
+         <!-- hot drinks 2 -->
+   <div class="dish-card bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition duration-300">
+        <div class="relative h-48 overflow-hidden">
+          <img src="data:image/jpeg;base64,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"
+            class="w-full h-full object-cover dish-image transition duration-500"
+            alt="" />
+          <span class="absolute top-4 right-4 bg-blue-500 text-white px-3 py-1 rounded-full text-xs font-semibold">
+            Cold coffee
+          </span>
+        </div>
+        <div class="product p-4">
+          <h3 class="text-xl font-semibold mb-2">Cold coffee</h3>
+          <p class="text-gray-600 mb-4">yummy</p>
+           <p class="text-gray-600 mb-4">₹50.</p>
+          <div class="flex items-center justify-between">
+            <div class="flex items-center text-amber-500">
+              <ion-icon name="time-outline" class="mr-1"></ion-icon>
+              <span>15 min</span>
+            </div>
+            <div class="quantity-controls">
+              <button class="decrease" aria-label="Decrease quantity">-</button>
+              <span class="quantity">0</span>
+              <button class="increase" aria-label="Increase quantity">+</button>
+            </div>
+            <button class="add-to-cart">Add to Cart</button>
+          </div>
+          <div class="cart-message text-sm mt-2"></div>
+          <div class="star-rating mt-2" data-rating="0">
+            <span class="star" data-value="1">☆</span>
+            <span class="star" data-value="2">☆</span>
+            <span class="star" data-value="3">☆</span>
+            <span class="star" data-value="4">☆</span>
+            <span class="star" data-value="5">☆</span>
+          </div>
+        </div>
+      </div>
+      <!-- hot drinks 3 -->
+        <div class="dish-card bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition duration-300">
+        <div class="relative h-48 overflow-hidden">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdI5HNplO1X1woAIrNzE43PV1c-9IHeJ6JWg&s"
+            class="w-full h-full object-cover dish-image transition duration-500"
+            alt="" />
+          <span class="absolute top-4 right-4 bg-blue-500 text-white px-3 py-1 rounded-full text-xs font-semibold">
+            Filter Tea
+          </span>
+        </div>
+        <div class="product p-4">
+          <h3 class="text-xl font-semibold mb-2">Filter Tea</h3>
+          <p class="text-gray-600 mb-4"> Delicious</p>
+           <p class="text-gray-600 mb-4">₹40.</p>
+          <div class="flex items-center justify-between">
+            <div class="flex items-center text-amber-500">
+              <ion-icon name="time-outline" class="mr-1"></ion-icon>
+              <span>10 min</span>
+            </div>
+            <div class="quantity-controls">
+              <button class="decrease" aria-label="Decrease quantity">-</button>
+              <span class="quantity">0</span>
+              <button class="increase" aria-label="Increase quantity">+</button>
+            </div>
+            <button class="add-to-cart">Add to Cart</button>
+          </div>
+          <div class="cart-message text-sm mt-2"></div>
+          <div class="star-rating mt-2" data-rating="0">
+            <span class="star" data-value="1">☆</span>
+            <span class="star" data-value="2">☆</span>
+            <span class="star" data-value="3">☆</span>
+            <span class="star" data-value="4">☆</span>
+            <span class="star" data-value="5">☆</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+  <!-- Categories -->
+  <section id="categories" class="py-16">
+    <div class="container mx-auto px-6">
+      <h2 class="text-3xl font-bold text-center mb-12">Browse Categories</h2>
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+        <div class="category-card text-center p-4 cursor-pointer hover:scale-105 transition">
+          <div class="w-20 h-20 mx-auto rounded-full bg-amber-100 flex items-center justify-center mb-3">
+            <ion-icon name="restaurant" class="text-2xl text-amber-600"></ion-icon>
+          </div>
+          <h3 class="font-semibold">Italian</h3>
+        </div>
+        <div class="category-card text-center p-4 cursor-pointer hover:scale-105 transition">
+          <div class="w-20 h-20 mx-auto rounded-full bg-amber-100 flex items-center justify-center mb-3">
+            <ion-icon name="flag" class="text-2xl text-amber-600"></ion-icon>
+          </div>
+          <h3 class="font-semibold">Mexican</h3>
+        </div>
+        <div class="category-card text-center p-4 cursor-pointer hover:scale-105 transition">
+          <div class="w-20 h-20 mx-auto rounded-full bg-amber-100 flex items-center justify-center mb-3">
+            <ion-icon name="fast-food" class="text-2xl text-amber-600"></ion-icon>
+          </div>
+          <h3 class="font-semibold">American</h3>
+        </div>
+        <div class="category-card text-center p-4 cursor-pointer hover:scale-105 transition">
+          <div class="w-20 h-20 mx-auto rounded-full bg-amber-100 flex items-center justify-center mb-3">
+            <ion-icon name="fish" class="text-2xl text-amber-600"></ion-icon>
+          </div>
+          <h3 class="font-semibold">Seafood</h3>
+        </div>
+        <div class="category-card text-center p-4 cursor-pointer hover:scale-105 transition">
+          <div class="w-20 h-20 mx-auto rounded-full bg-amber-100 flex items-center justify-center mb-3">
+            <ion-icon name="nutrition" class="text-2xl text-amber-600"></ion-icon>
+          </div>
+          <h3 class="font-semibold">Vegan</h3>
+        </div>
+        <div class="category-card text-center p-4 cursor-pointer hover:scale-105 transition">
+          <div class="w-20 h-20 mx-auto rounded-full bg-amber-100 flex items-center justify-center mb-3">
+            <ion-icon name="ice-cream" class="text-2xl text-amber-600"></ion-icon>
+          </div>
+          <h3 class="font-semibold">Desserts</h3>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Featured Chef -->
+  <section id="about" class="py-16 gradient-bg">
+    <div class="container mx-auto px-6">
+      <div class="flex flex-col md:flex-row items-center">
+        <div class="md:w-1/2 mb-8 md:mb-0 md:pr-8">
+          <img src="https://png.pngtree.com/png-clipart/20240418/original/pngtree-free-vector-little-chef-illustration-png-image_14884345.png" 
+               class="rounded-lg shadow-xl w-full h-auto max-w-md mx-auto" 
+               alt="Professional chef in white uniform smiling while preparing food in a restaurant kitchen">
+        </div>
+        <div class="md:w-1/2">
+          <h2 class="text-3xl font-bold mb-4">Meet Our Master Chef</h2>
+          <p class="text-gray-700 mb-6">
+            Chef Marco Rossi brings over 20 years of culinary experience from kitchens around the world. 
+            Specializing in Italian and Mediterranean cuisine, he's dedicated to bringing authentic flavors 
+            with a modern twist to home cooks everywhere.
+          </p>
+          <div class="flex space-x-4">
+            <button class="bg-amber-500 hover:bg-amber-600 text-white px-6 py-3 rounded-full transition">
+              View Chef's Recipes
+            </button>
+            <button class="border border-amber-500 text-amber-500 hover:bg-amber-50 px-6 py-3 rounded-full transition">
+              Cooking Tips
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter -->
+  <section class="py-16 bg-amber-600 text-white">
+    <div class="container mx-auto px-6 text-center">
+      <h2 class="text-3xl font-bold mb-4">Subscribe to Our Newsletter</h2>
+      <p class="max-w-2xl mx-auto mb-8">Get weekly recipes, cooking tips, and special offers delivered straight to your inbox.</p>
+      <div class="max-w-md mx-auto flex">
+        <input type="email" placeholder="Your email address" 
+               class="flex-grow px-4 py-3 rounded-l focus:outline-none text-gray-900">
+        <button class="bg-amber-800 hover:bg-amber-900 px-6 py-3 rounded-r transition">
+          Subscribe
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white py-12">
+    <div class="container mx-auto px-6">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div>
+          <h3 class="text-xl font-bold mb-4 text-amber-500"> Arun FlavorFusion</h3>
+          <p>Discover, cook, and share amazing recipes from around the world.</p>
+        </div>
+        <div>
+          <h4 class="font-bold mb-4">Quick Links</h4>
+          <ul class="space-y-2">
+            <li><a href="#" class="hover:text-amber-500 transition">Home</a></li>
+            <li><a href="#recipes" class="hover:text-amber-500 transition">Recipes</a></li>
+            <li><a href="#categories" class="hover:text-amber-500 transition">Categories</a></li>
+            <li><a href="#about" class="hover:text-amber-500 transition">About</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-bold mb-4">Recipe Types</h4>
+          <ul class="space-y-2">
+            <li><a href="#" class="hover:text-amber-500 transition">Vegetarian</a></li>
+            <li><a href="#" class="hover:text-amber-500 transition">Quick Meals</a></li>
+            <li><a href="#" class="hover:text-amber-500 transition">Slow Cooker</a></li>
+            <li><a href="#" class="hover:text-amber-500 transition">Desserts</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-bold mb-4">Connect</h4>
+          <div class="flex space-x-4">
+            <a href="#" class="hover:text-amber-500 transition">
+              <ion-icon name="logo-facebook" class="text-2xl"></ion-icon>
+            </a>
+            <a href="#" class="hover:text-amber-500 transition">
+              <ion-icon name="logo-instagram" class="text-2xl"></ion-icon>
+            </a>
+            <a href="#" class="hover:text-amber-500 transition">
+              <ion-icon name="logo-pinterest" class="text-2xl"></ion-icon>
+            </a>
+            <a href="#" class="hover:text-amber-500 transition">
+              <ion-icon name="logo-youtube" class="text-2xl"></ion-icon>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400 text-sm">
+        <p>© 2025 Arun FlavorFusion. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SCRIPTS -->
+  <script>
+    // Mobile menu toggle
+    document.getElementById('menu-toggle').addEventListener('click', function () {
+      const navLinks = document.querySelector('.nav-links');
+      navLinks.classList.toggle('hidden');
+    });
+
+    // Quantity & Cart Logic
+    document.querySelectorAll('.product').forEach(product => {
+      let quantity = 0;
+      const quantityDisplay = product.querySelector('.quantity');
+      const increaseBtn = product.querySelector('.increase');
+      const decreaseBtn = product.querySelector('.decrease');
+      const addToCartBtn = product.querySelector('.add-to-cart');
+      const cartMessage = product.querySelector('.cart-message');
+
+      increaseBtn.addEventListener('click', () => {
+        if (quantity < 5) {
+          quantity++;
+          quantityDisplay.textContent = quantity;
+        }
+      });
+
+      decreaseBtn.addEventListener('click', () => {
+        if (quantity > 0) {
+          quantity--;
+          quantityDisplay.textContent = quantity;
+        }
+      });
+
+      addToCartBtn.addEventListener('click', () => {
+        cartMessage.textContent = quantity > 0 ? "Added to cart!" : "Please select quantity first.";
+      });
+    });
+
+    // Star Rating
+    document.querySelectorAll('.star-rating').forEach(rating => {
+      const stars = rating.querySelectorAll('.star');
+      stars.forEach(star => {
+        star.addEventListener('click', () => {
+          const value = star.getAttribute('data-value');
+          rating.setAttribute('data-rating', value);
+          stars.forEach(s => {
+            s.textContent = s.getAttribute('data-value') <= value ? '⭐' : '☆';
+          });
+        });
+      });
+    });
+  </script>
+  <script>
+  const cart = {};
+  const prices = {
+    "Gongura Chicken Biryani": 180,
+    "Chicken Biryani": 150,
+    "Mutton Biryani": 200,
+    "Cheepala pulusu": 350,
+    "Fish Biryani": 130,
+    "Prawns Biryani": 125,
+    "Gobi Manchurya":80,
+    "Egg Noodels":80,
+    "Chicken fried rice":100,
+    "Masala Dosa":40,
+    "Idly":40,
+    "Puri":40,
+    "Cake":300,
+    "Vennela Ice cream":60,
+    "Pudding":100,
+    "Seasonal Fruits":100,
+    "Cut Fruits":100,
+    "Dessert Fruits":150,
+    "Pizza":140,
+    "Burger":150,
+    "Cool Drinks & Juice":25,
+    "Tea":20,
+    "Cold coffee":50,
+    "Filter Tea":40,
+  };
+  const cartCountEl = document.getElementById('cart-count');
+  const cartItemsEl = document.getElementById('cart-items');
+  const cartPanel = document.getElementById('cart-panel');
+
+// Toggle cart   panel
+  document.getElementById('cart-btn').addEventListener('click', () => {
+    cartPanel.classList.toggle('hidden');
+    renderCart();
+  });
+
+  // Render cart contents
+  function renderCart() {
+    cartItemsEl.innerHTML = '';
+    const cartTotalEl = document.getElementById('cart-total');
+    let total = 0;
+
+    if (Object.keys(cart).length === 0) {
+      cartItemsEl.innerHTML = '<li class="text-gray-600">Your cart is empty.</li>';
+      cartTotalEl.textContent = 'Total: ₹0';
+      return;
+    }
+
+    for (const [name, quantity] of Object.entries(cart)) {
+      const price = prices[name] || 0;
+      total += quantity * price;
+
+      const li = document.createElement('li');
+      li.className = 'flex justify-between items-center border-b pb-2';
+
+      li.innerHTML = `
+        <div>
+          <span class="font-medium">${name}</span>
+          <span class="text-gray-600 ml-2">x ${quantity}</span>
+        </div>
+        <button class="remove-item text-red-600 hover:text-red-800 text-sm">❌ Cancel</button>
+      `;
+
+      li.querySelector('.remove-item').addEventListener('click', () => {
+        delete cart[name];
+        updateCartCount();
+        renderCart();
+      });
+
+      cartItemsEl.appendChild(li);
+    }
+
+    cartTotalEl.textContent = `Total: ₹${total}`;
+  }
+
+  // Product card quantity & add-to-cart logic
+  document.querySelectorAll('.product').forEach(product => {
+    let quantity = 0;
+    const name = product.querySelector('h3').textContent;
+    const quantityDisplay = product.querySelector('.quantity');
+    const increaseBtn = product.querySelector('.increase');
+    const decreaseBtn = product.querySelector('.decrease');
+    const addToCartBtn = product.querySelector('.add-to-cart');
+    const cartMessage = product.querySelector('.cart-message');
+
+    increaseBtn.addEventListener('click', () => {
+      if (quantity < 5) {
+        quantity++;
+        quantityDisplay.textContent = quantity;
+      }
+    });
+
+    decreaseBtn.addEventListener('click', () => {
+      if (quantity > 0) {
+        quantity--;
+        quantityDisplay.textContent = quantity;
+      }
+    });
+
+    addToCartBtn.addEventListener('click', () => {
+      if (quantity > 0) {
+        cart[name] = (cart[name] || 0) + quantity;
+        quantity = 0;
+        quantityDisplay.textContent = 0;
+        cartMessage.textContent = "Added to cart!";
+        updateCartCount();
+      } else {
+        cartMessage.textContent = "Please select quantity first.";
+      }
+    });
+  });
+
+  // Update cart count in navbar
+  function updateCartCount() {
+    let total = 0;
+    for (const qty of Object.values(cart)) {
+      total += qty;
+    }
+    cartCountEl.textContent = total;
+  }
+</script>
+</body>
+</html>
